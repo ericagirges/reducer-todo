@@ -5,7 +5,7 @@ import React, { useReducer } from 'react';
 // priority: "",
 // completed: false,
 
-const initState = {
+export const initialTodoState = {
     todos: []
 };
 

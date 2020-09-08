@@ -1,9 +1,38 @@
 import React, { useReducer, useState } from "react";
-import TodoReducer from "../reducers/TodoReducer";
+import TodoReducer, { initialTodoState } from "../reducers/TodoReducer";
 import Todos from "./Todos";
+import styled from "styled-components";
+
+const StyledForm = styled.form`
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StyledInput = styled.input `
+  margin-bottom: 10px;
+  height: 30px;
+  width: 300px;
+  font-family: "Arimo";
+  text-align: center;
+  font-size: 1.0em;
+`
+
+const AddButton = styled.button `
+  padding: 2px 7px;
+  background-color: #EEC920;
+  text-decoration: none;
+  color: black;
+  font-size: 1.3em;
+  font-family: "Arimo";
+  border-radius: 5px;
+  width: 200px;
+
+`
 
 const TodoForm = (props) => {
-  const [state, dispatch] = useReducer(TodoReducer);
+  const [state, dispatch] = useReducer(TodoReducer, initialTodoState);
   const [taskName, setTaskName] = useState("");
 
   const clearCompleted = () => {
@@ -22,8 +51,8 @@ const TodoForm = (props) => {
     // add the todo task to reducer state
     dispatch({
       type: "ADD_TODO",
-      task: {
-        task: taskName,
+      payload: {
+        name: taskName,
         id: Date.now(),
         completed: false,
       },
@@ -50,17 +79,21 @@ const TodoForm = (props) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledInput
           type="text"
           name="task"
-          value={state.task}
+          value={taskName}
           onChange={handleChanges}
           placeholder="Add a new task."
         />
-        <button>Add</button>
-      </form>
-      <Todos />
+        <AddButton>Add</AddButton>
+      </StyledForm>
+      <Todos
+        todos={state.todos}
+        toggleTaskCompleted={handleToggleTaskCompleted}
+        clearCompleted={clearCompleted}
+      />
     </div>
   );
 };

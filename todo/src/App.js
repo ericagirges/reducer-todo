@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <h1>Todo App</h1>
+      <h1>Pocket Docket</h1>
       </header>
       <TodoForm />
     </div>
