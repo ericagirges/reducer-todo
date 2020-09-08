@@ -17,7 +17,7 @@ const reducer =  (state, action) => {
             };
         case "CLEAR_COMPLETED":
             return {
-                todos: state.todos.filter(todo => todo.completed)
+                todos: state.todos.filter(todo => !todo.completed)
             };
         case "TOGGLE_COMPLETED":
             return {

@@ -35,9 +35,6 @@ const TodoForm = (props) => {
   const [state, dispatch] = useReducer(TodoReducer, initialTodoState);
   const [taskName, setTaskName] = useState("");
 
-  const clearCompleted = () => {
-    dispatch({});
-  };
 
   // handle input changes
   const handleChanges = (event) => {
@@ -92,7 +89,7 @@ const TodoForm = (props) => {
       <Todos
         todos={state.todos}
         toggleTaskCompleted={handleToggleTaskCompleted}
-        clearCompleted={clearCompleted}
+        clearCompleted={handleClearCompleted}
       />
     </div>
   );
