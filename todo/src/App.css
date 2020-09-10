@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+}
+
+
+.App-header {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8em;
+  font-family: "Balsamiq Sans";
+  color: #01A2E3;
+}
